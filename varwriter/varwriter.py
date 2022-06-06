@@ -59,7 +59,8 @@ def main():
             if not (ftp_r := connect_ftp(msg="[FTP]: Connection to the Variscite FTP...\r")):
                 sys.exit("[INFO]: Could not establish FTP connection using the credentials.")
             remote_recovery_sdcard_file_name = config[0]['RECOVERY_SDCARD_NAME']
-            remote_recovery_sdcard_folder_path = config[2]['RECOVERY_SDCARD_FOLDER_PATH']      
+            remote_recovery_sdcard_folder_path = config[2]['RECOVERY_SDCARD_FOLDER_PATH']
+            remote_recovery_sdcard_sha1_hash = config[4]['RECOVERY_SDCARD_SHA1_HASH']
 
             if not (local_recovery_sdcard_file_path := retrieve_remote_file(
                                                 ftp_r,
@@ -69,7 +70,6 @@ def main():
                 sys.exit(f"[INFO]: Something went wrong remotely with {local_recovery_sdcard_file_path} file.")
 
     local_recovery_sdcard_sha1_hash = get_sha1_hash(local_recovery_sdcard_file_path)
-    remote_recovery_sdcard_sha1_hash = config[4]['RECOVERY_SDCARD_SHA1_HASH']
 
     sys.stdout.write(f"[INFO]: Remote SHA1 Hash:\t'{remote_recovery_sdcard_sha1_hash}'\n")
     sys.stdout.write(f"[INFO]: Local SHA1 Hash:\t'{local_recovery_sdcard_sha1_hash}'\n")

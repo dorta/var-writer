@@ -44,7 +44,7 @@ def main():
         configs = list(enumerate(yaml.safe_load_all(fp)))
 
     for index, config in configs:
-        sys.stdout.write(f"[{index}]:\t{config[6]['RECOVERY_SDCARD_FILE_SIZE']}\t" \
+        sys.stdout.write(f"[{index}]: {config[6]['RECOVERY_SDCARD_FILE_SIZE']:>8}\t" \
                          f"{config[5]['RECOVERY_SDCARD_UPLOAD_DATE']}\t" \
                          f"{config[1]['RECOVERY_SDCARD_OS_TYPE']}\t" \
                          f"{config[0]['RECOVERY_SDCARD_NAME']}\n")
